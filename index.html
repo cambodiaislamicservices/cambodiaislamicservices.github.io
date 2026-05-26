@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cambodia Islamic Services | Ground Implementation Partner</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; color: #e8eaf0; background: #0A1628; font-size: 15px; line-height: 1.7; }
+    nav { background: #0F2D1F; padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; position: fixed; top: 0; left: 0; right: 0; z-index: 100; flex-wrap: wrap; gap: 8px; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo span { color: #fff; font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; }
+    .nav-right { display: flex; align-items: center; gap: 12px; }
+    .nav-email { color: #9FE1CB; font-size: 12px; }
+    .lang-toggle { display: flex; background: rgba(255,255,255,0.1); border-radius: 20px; overflow: hidden; border: 0.5px solid rgba(255,255,255,0.2); }
+    .lang-btn { padding: 4px 12px; font-size: 12px; font-family: 'DM Sans', sans-serif; cursor: pointer; border: none; background: transparent; color: rgba(255,255,255,0.6); transition: all 0.2s; }
+    .lang-btn.active { background: #1D9E75; color: #fff; }
+    .hero { background: #0F2D1F; color: #fff; padding: 4rem 2rem 3.5rem; padding-top: 7rem; position: relative; overflow: hidden; text-align: center; }
+    .hero::before { content: ''; position: absolute; top: -40px; right: -60px; width: 300px; height: 300px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.06); }
+    .hero::after { content: ''; position: absolute; bottom: -60px; left: -40px; width: 220px; height: 220px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.05); }
+    .hero-sub { font-size: 12px; color: #9FE1CB; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 600; line-height: 1.2; margin-bottom: 1.25rem; }
+    .hero-desc { font-size: 14px; color: rgba(255,255,255,0.7); max-width: 520px; line-height: 1.8; margin-bottom: 2rem; margin-left: auto; margin-right: auto; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; justify-content: center; }
+    .badge { background: rgba(255,255,255,0.08); border: 0.5px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 4px 14px; font-size: 12px; color: rgba(255,255,255,0.85); }
+    .cta-row { display: flex; gap: 10px; flex-wrap: wrap; justify-content: center; }
+    .btn-primary { background: #1D9E75; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; font-weight: 500; }
+    .btn-secondary { background: transparent; color: #fff; border: 0.5px solid rgba(255,255,255,0.3); padding: 12px 24px; border-radius: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none; display: inline-block; }
+    .section { padding: 3rem 2rem; border-bottom: 0.5px solid #1e3a5f; max-width: 860px; margin: 0 auto; }
+    .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #1D9E75; font-weight: 500; margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; color: #e8eaf0; margin-bottom: 1.75rem; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .service-card { background: #0d2240; border: 0.5px solid #1e3a5f; border-radius: 12px; padding: 1.25rem; }
+    .service-icon { font-size: 22px; color: #1D9E75; margin-bottom: 10px; display: block; }
+    .service-name { font-size: 14px; font-weight: 500; color: #e8eaf0; margin-bottom: 4px; }
+    .service-desc { font-size: 12px; color: #8aafd4; line-height: 1.6; }
+    .why-list { display: flex; flex-direction: column; gap: 16px; }
+    .why-item { display: flex; gap: 14px; align-items: flex-start; }
+    .why-icon { width: 36px; height: 36px; border-radius: 8px; background: #0d2240; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #1D9E75; font-size: 18px; }
+    .why-text strong { display: block; font-size: 14px; font-weight: 500; color: #e8eaf0; margin-bottom: 2px; }
+    .why-text span { font-size: 13px; color: #8aafd4; }
+    .how-steps { display: flex; flex-direction: column; }
+    .step { display: flex; gap: 16px; align-items: flex-start; position: relative; }
+    .step:not(:last-child)::after { content: ''; position: absolute; left: 16px; top: 36px; bottom: -8px; width: 0.5px; background: #1e3a5f; }
+    .step-num { width: 32px; height: 32px; border-radius: 50%; background: #1D9E75; color: #fff; font-size: 13px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { padding-bottom: 24px; }
+    .step-body strong { display: block; font-size: 14px; font-weight: 500; color: #e8eaf0; margin-bottom: 2px; }
+    .step-body span { font-size: 13px; color: #8aafd4; }
+    .contact-card { background: #0d2240; border: 0.5px solid #1e3a5f; border-radius: 12px; padding: 1.25rem; margin-bottom: 12px; display: flex; align-items: center; gap: 14px; color: inherit; transition: border-color 0.2s; text-decoration: none; }
+    .contact-card:hover { border-color: #1D9E75; }
+    .contact-icon { width: 40px; height: 40px; border-radius: 8px; background: #1D9E75; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; flex-shrink: 0; }
+    .contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #999; margin-bottom: 2px; }
+    .contact-value { font-size: 14px; font-weight: 500; color: #e8eaf0; }
+    footer { background: #0F2D1F; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 12px; }
+    footer strong { color: rgba(255,255,255,0.85); }
+    .my { display: none; }
+    @media (max-width: 600px) { .hero h1 { font-size: 1.8rem; } .services-grid { grid-template-columns: 1fr 1fr; } .nav-email { display: none; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">
+      <svg width="36" height="36" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="48" fill="none" stroke="#1D9E75" stroke-width="1.5"/>
+        <path d="M 36 22 A 30 30 0 1 1 36 78 A 22 22 0 1 0 36 22 Z" fill="#9FE1CB"/>
+        <polygon points="68,18 70.5,25 78,25 72,29.5 74.5,37 68,32.5 61.5,37 64,29.5 58,25 65.5,25" fill="#9FE1CB"/>
+      </svg>
+      <span>Cambodia Islamic Services</span>
+    </div>
+    <div class="nav-right">
+      <span class="nav-email">cambodiaislamicservices@outlook.com</span>
+      <div class="lang-toggle">
+        <button class="lang-btn active" onclick="setLang('en')" id="btn-en">EN</button>
+        <button class="lang-btn" onclick="setLang('my')" id="btn-my">BM</button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="hero">
+    <svg width="160" height="160" viewBox="0 0 680 260" style="margin-bottom:1.5rem;display:block;">
+      <rect x="0" y="0" width="680" height="260" fill="#0F2D1F" rx="16"/>
+      <g transform="translate(340,130)">
+        <circle cx="0" cy="0" r="90" fill="none" stroke="#1D9E75" stroke-width="0.8"/>
+        <circle cx="0" cy="0" r="84" fill="none" stroke="#1D9E75" stroke-width="0.3"/>
+        <path d="M -28 -38 A 48 48 0 1 1 -28 38 A 34 34 0 1 0 -28 -38 Z" fill="#9FE1CB"/>
+        <g transform="translate(22,-44) rotate(15)">
+          <polygon points="0,-9 2.1,-3 8,-3 3.4,1.1 5.6,7.5 0,3.5 -5.6,7.5 -3.4,1.1 -8,-3 -2.1,-3" fill="#9FE1CB"/>
+        </g>
+        
+      </g>
+      <text x="340" y="198" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="600" fill="#ffffff" letter-spacing="2">CAMBODIA ISLAMIC SERVICES</text>
+      <text x="340" y="218" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#9FE1CB" letter-spacing="3">GROUND IMPLEMENTATION PARTNER</text>
+    </svg>
+
+    <p class="hero-sub en">Ground Implementation Partner · Cambodia</p>
+    <p class="hero-sub my">Rakan Pelaksana Lapangan · Kemboja</p>
+    <h1>Cambodia Islamic<br>Services</h1>
+    <p class="hero-desc en">We are your trusted on-ground partner for Islamic humanitarian programmes in Cambodia — from Qurban and Zakat to Ramadan aid, education, water wells, and mosque development.</p>
+    <p class="hero-desc my">Kami adalah rakan pelaksana lapangan anda yang dipercayai untuk program kemanusiaan Islam di Kemboja — daripada Qurban dan Zakat hinggalah bantuan Ramadan, pendidikan, telaga air, dan pembangunan masjid.</p>
+
+    <div class="badge-row">
+      <span class="badge en">📍 Based in Cambodia</span>
+      <span class="badge my">📍 Berpusat di Kemboja</span>
+      <span class="badge en">✓ Active operations</span>
+      <span class="badge my">✓ Operasi Aktif</span>
+      <span class="badge en">✓ Open to partnerships</span>
+      <span class="badge my">✓ Terbuka untuk Kerjasama</span>
+    </div>
+    <div class="cta-row">
+      <button class="btn-primary" id="main-cta" onclick="document.getElementById('contact-popup').style.display='flex'">Partner with us</button>
+      <a href="#services" class="btn-secondary" id="main-services">Our services</a>
+    </div>
+  </div>
+
+  <div class="section" id="services">
+    <p class="section-label en">What we do</p>
+    <p class="section-label my">Apa Yang Kami Lakukan</p>
+    <p class="section-title en">Full-service Islamic programme execution</p>
+    <p class="section-title my">Pelaksanaan Program Islam Sepenuhnya</p>
+    <div class="services-grid">
+      <div class="service-card">
+        
+        <p class="service-name">Qurban &amp; Aqiqah</p>
+        <p class="service-desc en">Animal sourcing, halal slaughter, and full distribution to Muslim communities</p>
+        <p class="service-desc my">Penyediaan haiwan, sembelihan halal, dan pengagihan penuh kepada komuniti Muslim</p>
+      </div>
+      <div class="service-card">
+        
+        <p class="service-name">Zakat &amp; Sadaqah</p>
+        <p class="service-desc en">Identify eligible recipients and distribute funds or goods on your behalf</p>
+        <p class="service-desc my">Mengenal pasti penerima layak dan mengagihkan dana atau barangan bagi pihak anda</p>
+      </div>
+      <div class="service-card">
+        
+        <p class="service-name en">Water Hand Pump</p>
+        <p class="service-name my">Pam Air Tangan</p>
+        <p class="service-desc en">Active water pump projects for underserved Cham Muslim villages in Cambodia</p>
+        <p class="service-desc my">Projek pam air aktif untuk kampung Muslim Cham yang memerlukan di Kemboja</p>
+      </div>
+      <div class="service-card">
+        
+        <p class="service-name en">Ramadan programmes</p>
+        <p class="service-name my">Program Ramadan</p>
+        <p class="service-desc en">Iftar packs, Sahur distribution, and food baskets for poor families</p>
+        <p class="service-desc my">Beg iftar, pengagihan sahur, dan bakul makanan untuk keluarga miskin</p>
+      </div>
+      <div class="service-card">
+        
+        <p class="service-name en">Education support</p>
+        <p class="service-name my">Sokongan Pendidikan</p>
+        <p class="service-desc en">Madrasah aid, Quran programmes, school supplies for Muslim children</p>
+        <p class="service-desc my">Bantuan madrasah, program Al-Quran, bekalan sekolah untuk kanak-kanak Muslim</p>
+      </div>
+      <div class="service-card">
+        
+        <p class="service-name en">Mosque &amp; infrastructure</p>
+        <p class="service-name my">Masjid &amp; Infrastruktur</p>
+        <p class="service-desc en">Mosque renovation, water wells, and prayer facility support</p>
+        <p class="service-desc my">Renovasi masjid, telaga air, dan sokongan kemudahan solat</p>
+      </div>
+      <div class="service-card">
+        
+        <p class="service-name en">Community welfare</p>
+        <p class="service-name my">Kebajikan Komuniti</p>
+        <p class="service-desc en">Orphan sponsorship, clothing drives, and year-round food aid</p>
+        <p class="service-desc my">Tajaan anak yatim, derma pakaian, dan bantuan makanan sepanjang tahun</p>
+      </div>
+      <div class="service-card">
+        
+        <p class="service-name">Fidyah &amp; Kaffarah</p>
+        <p class="service-desc en">Proper distribution to eligible recipients according to Shariah guidelines</p>
+        <p class="service-desc my">Pengagihan yang betul kepada penerima layak mengikut garis panduan Syariah</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label en">Why partner with us</p>
+    <p class="section-label my">Mengapa Bekerjasama Dengan Kami</p>
+    <p class="section-title en">What we bring to the table</p>
+    <p class="section-title my">Apa Yang Kami Tawarkan</p>
+    <div class="why-list">
+      <div class="why-item">
+        
+        <div class="why-text">
+          <strong class="en">Permanently on the ground</strong>
+          <strong class="my">Sentiasa Berada di Lapangan</strong>
+          <span class="en">We live and operate in Cambodia — no outsourcing, no middlemen</span>
+          <span class="my">Kami tinggal dan beroperasi di Kemboja — tiada penyumberan luar, tiada orang tengah</span>
+        </div>
+      </div>
+      <div class="why-item">
+        
+        <div class="why-text">
+          <strong class="en">Established community access</strong>
+          <strong class="my">Akses Komuniti Yang Kukuh</strong>
+          <span class="en">Direct relationships with Cham Muslim villages, orphanages, and local ulama</span>
+          <span class="my">Hubungan terus dengan kampung Muslim Cham, rumah anak yatim, dan ulama tempatan</span>
+        </div>
+      </div>
+      <div class="why-item">
+        
+        <div class="why-text">
+          <strong class="en">Full documentation</strong>
+          <strong class="my">Dokumentasi Lengkap</strong>
+          <span class="en">Photos, videos, and reports delivered to you for every programme</span>
+          <span class="my">Foto, video, dan laporan dihantar kepada anda untuk setiap program</span>
+        </div>
+      </div>
+      <div class="why-item">
+        
+        <div class="why-text">
+          <strong class="en">Shariah-compliant execution</strong>
+          <strong class="my">Pelaksanaan Patuh Syariah</strong>
+          <span class="en">All ibadah conducted in accordance with Islamic guidelines and local authority oversight</span>
+          <span class="my">Semua ibadah dilaksanakan mengikut garis panduan Islam dan pengawasan pihak berkuasa tempatan</span>
+        </div>
+      </div>
+      <div class="why-item">
+        
+        <div class="why-text">
+          <strong class="en">Cost-effective for donors</strong>
+          <strong class="my">Kos Efektif untuk Penderma</strong>
+          <span class="en">Lower cost of living in Cambodia means donor funds go significantly further</span>
+          <span class="my">Kos sara hidup yang lebih rendah di Kemboja bermakna dana penderma dapat dimanfaatkan dengan lebih banyak</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label en">How it works</p>
+    <p class="section-label my">Cara Ia Berfungsi</p>
+    <p class="section-title en">Simple partnership process</p>
+    <p class="section-title my">Proses Kerjasama Yang Mudah</p>
+    <div class="how-steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body">
+        <strong class="en">You contact us</strong><strong class="my">Anda Hubungi Kami</strong>
+        <span class="en">Share your programme brief, timeline, and budget</span>
+        <span class="my">Kongsikan ringkasan program, jadual, dan bajet anda</span>
+      </div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body">
+        <strong class="en">We propose &amp; confirm</strong><strong class="my">Kami Cadang &amp; Sahkan</strong>
+        <span class="en">We send a detailed execution plan with transparent pricing</span>
+        <span class="my">Kami hantar pelan pelaksanaan terperinci dengan harga yang telus</span>
+      </div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body">
+        <strong class="en">We execute on the ground</strong><strong class="my">Kami Laksanakan di Lapangan</strong>
+        <span class="en">Your programme is carried out fully by our team in Cambodia</span>
+        <span class="my">Program anda dilaksanakan sepenuhnya oleh pasukan kami di Kemboja</span>
+      </div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body">
+        <strong class="en">You receive full proof</strong><strong class="my">Anda Terima Bukti Lengkap</strong>
+        <span class="en">Photos, videos, and a completion report sent to you and your donors</span>
+        <span class="my">Foto, video, dan laporan penyelesaian dihantar kepada anda dan penderma anda</span>
+      </div></div>
+    </div>
+  </div>
+
+  <div class="section" id="contact">
+    <p class="section-label en">Get in touch</p>
+    <p class="section-label my">Hubungi Kami</p>
+    <p class="section-title en">Ready to partner?</p>
+    <p class="section-title my">Bersedia untuk Bekerjasama?</p>
+    <a href="mailto:cambodiaislamicservices@outlook.com" class="contact-card">
+      
+      <div>
+        <p class="contact-label en">Email — click to send</p>
+        <p class="contact-label my">E-mel — klik untuk hantar</p>
+        <p class="contact-value">cambodiaislamicservices@outlook.com</p>
+      </div>
+    </a>
+    <a href="https://wa.me/85570700776" target="_blank" class="contact-card">
+      
+      <div>
+        <p class="contact-label en">WhatsApp — click to chat</p>
+        <p class="contact-label my">WhatsApp — klik untuk berbual</p>
+        <p class="contact-value">+855 70 700 776</p>
+      </div>
+    </a>
+    <div class="contact-card" style="cursor:default;">
+      
+      <div>
+        <p class="contact-label en">Location</p>
+        <p class="contact-label my">Lokasi</p>
+        <p class="contact-value en">Phnom Penh, Cambodia</p>
+        <p class="contact-value my">Phnom Penh, Kemboja</p>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <strong>Cambodia Islamic Services</strong><br>
+    <span class="en">Trusted ground partner for Islamic humanitarian programmes · Phnom Penh, Cambodia</span>
+    <span class="my">Rakan pelaksana lapangan yang dipercayai untuk program kemanusiaan Islam · Phnom Penh, Kemboja</span>
+    <br><br>cambodiaislamicservices@outlook.com
+  </footer>
+
+  <div id="contact-popup" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.6); z-index:999; align-items:center; justify-content:center;">
+    <div style="background:#fff; border-radius:16px; padding:2rem; max-width:360px; width:90%; text-align:center;">
+      <p style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; color:#0F2D1F; margin-bottom:0.5rem;" class="en">Contact Us</p>
+      <p style="font-family:'Playfair Display',serif; font-size:1.2rem; font-weight:600; color:#0F2D1F; margin-bottom:0.5rem;" class="my">Hubungi Kami</p>
+      <p style="font-size:13px; color:#666; margin-bottom:1.5rem;" class="en">Choose how to reach us</p>
+      <p style="font-size:13px; color:#666; margin-bottom:1.5rem;" class="my">Pilih cara untuk menghubungi kami</p>
+      <a href="mailto:cambodiaislamicservices@outlook.com" style="display:flex; align-items:center; gap:12px; background:#f9f9f7; border:0.5px solid #e5e5e5; border-radius:12px; padding:1rem; margin-bottom:10px; text-decoration:none; color:#0F2D1F;">
+        <div style="width:40px; height:40px; border-radius:8px; background:#E1F5EE; display:flex; align-items:center; justify-content:center; color:#0F6E56; font-size:20px; flex-shrink:0;"></div>
+        <div style="text-align:left;">
+          <p style="font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#999; margin-bottom:2px;" class="en">Email</p>
+          <p style="font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#999; margin-bottom:2px;" class="my">E-mel</p>
+          <p style="font-size:13px; font-weight:500;">cambodiaislamicservices@outlook.com</p>
+        </div>
+      </a>
+      <a href="https://wa.me/85570700776" target="_blank" style="display:flex; align-items:center; gap:12px; background:#f9f9f7; border:0.5px solid #e5e5e5; border-radius:12px; padding:1rem; margin-bottom:1.5rem; text-decoration:none; color:#0F2D1F;">
+        <div style="width:40px; height:40px; border-radius:8px; background:#E1F5EE; display:flex; align-items:center; justify-content:center; color:#0F6E56; font-size:20px; flex-shrink:0;"></div>
+        <div style="text-align:left;">
+          <p style="font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#999; margin-bottom:2px;">WhatsApp</p>
+          <p style="font-size:13px; font-weight:500;">+855 70 700 776</p>
+        </div>
+      </a>
+      <button onclick="document.getElementById('contact-popup').style.display='none'" style="background:transparent; border:0.5px solid #e5e5e5; border-radius:8px; padding:8px 24px; font-size:13px; cursor:pointer; color:#666;" class="en">Close</button>
+      <button onclick="document.getElementById('contact-popup').style.display='none'" style="background:transparent; border:0.5px solid #e5e5e5; border-radius:8px; padding:8px 24px; font-size:13px; cursor:pointer; color:#666;" class="my">Tutup</button>
+    </div>
+  </div>
+
+  <script>
+    function setLang(lang) {
+      document.querySelectorAll('.en').forEach(el => el.style.display = lang === 'en' ? (el.tagName === 'SPAN' ? 'inline' : 'block') : 'none');
+      document.querySelectorAll('.my').forEach(el => el.style.display = lang === 'my' ? (el.tagName === 'SPAN' ? 'inline' : 'block') : 'none');
+      document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+      document.getElementById('btn-my').classList.toggle('active', lang === 'my');
+      document.getElementById('main-cta').textContent = lang === 'en' ? 'Partner with us' : 'Jalin Kerjasama';
+      document.getElementById('main-services').textContent = lang === 'en' ? 'Our services' : 'Perkhidmatan Kami';
+    }
+    setLang('en');
+  </script>
+
+</body>
+</html>
