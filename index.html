@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cambodia Islamic Services</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css"/>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'DM Sans', sans-serif; color: #1a1a1a; background: #fff; font-size: 15px; line-height: 1.7; }
+
+    /* NAV */
+    nav { background: #0F2D1F; padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; z-index: 100; }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo span { color: #fff; font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: 600; }
+    .nav-email { color: #9FE1CB; font-size: 12px; }
+
+    /* HERO */
+    .hero { background: #0F2D1F; color: #fff; padding: 4rem 2rem 3.5rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -40px; right: -60px; width: 300px; height: 300px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.06); }
+    .hero::after { content: ''; position: absolute; bottom: -60px; left: -40px; width: 220px; height: 220px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.05); }
+    .crescent { font-size: 32px; margin-bottom: 1rem; display: block; }
+    .hero-sub { font-size: 12px; color: #9FE1CB; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem; }
+    .hero h1 { font-family: 'Playfair Display', serif; font-size: 2.4rem; font-weight: 600; line-height: 1.2; margin-bottom: 1.25rem; }
+    .hero-desc { font-size: 14px; color: rgba(255,255,255,0.7); max-width: 520px; line-height: 1.8; margin-bottom: 2rem; }
+    .badge-row { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2rem; }
+    .badge { background: rgba(255,255,255,0.08); border: 0.5px solid rgba(255,255,255,0.15); border-radius: 20px; padding: 4px 14px; font-size: 12px; color: rgba(255,255,255,0.85); }
+    .cta-row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .btn-primary { background: #1D9E75; color: #fff; border: none; padding: 12px 24px; border-radius: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; font-weight: 500; text-decoration: none; display: inline-block; }
+    .btn-secondary { background: transparent; color: #fff; border: 0.5px solid rgba(255,255,255,0.3); padding: 12px 24px; border-radius: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; cursor: pointer; text-decoration: none; display: inline-block; }
+
+    /* SECTIONS */
+    .section { padding: 3rem 2rem; border-bottom: 0.5px solid #e8e8e8; max-width: 860px; margin: 0 auto; }
+    .section-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.1em; color: #1D9E75; font-weight: 500; margin-bottom: 0.5rem; }
+    .section-title { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 600; color: #0F2D1F; margin-bottom: 1.75rem; }
+
+    /* SERVICES */
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; }
+    .service-card { background: #f9f9f7; border: 0.5px solid #e5e5e5; border-radius: 12px; padding: 1.25rem; }
+    .service-icon { font-size: 22px; color: #1D9E75; margin-bottom: 10px; display: block; }
+    .service-name { font-size: 14px; font-weight: 500; color: #0F2D1F; margin-bottom: 4px; }
+    .service-desc { font-size: 12px; color: #666; line-height: 1.6; }
+
+    /* WHY */
+    .why-list { display: flex; flex-direction: column; gap: 16px; }
+    .why-item { display: flex; gap: 14px; align-items: flex-start; }
+    .why-icon { width: 36px; height: 36px; border-radius: 8px; background: #E1F5EE; display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #0F6E56; font-size: 18px; }
+    .why-text strong { display: block; font-size: 14px; font-weight: 500; color: #0F2D1F; margin-bottom: 2px; }
+    .why-text span { font-size: 13px; color: #666; }
+
+    /* HOW */
+    .how-steps { display: flex; flex-direction: column; gap: 0; }
+    .step { display: flex; gap: 16px; align-items: flex-start; position: relative; }
+    .step:not(:last-child)::after { content: ''; position: absolute; left: 16px; top: 36px; bottom: -8px; width: 0.5px; background: #e5e5e5; }
+    .step-num { width: 32px; height: 32px; border-radius: 50%; background: #0F2D1F; color: #9FE1CB; font-size: 13px; font-weight: 500; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+    .step-body { padding-bottom: 24px; }
+    .step-body strong { display: block; font-size: 14px; font-weight: 500; color: #0F2D1F; margin-bottom: 2px; }
+    .step-body span { font-size: 13px; color: #666; }
+
+    /* CONTACT */
+    .contact-card { background: #f9f9f7; border: 0.5px solid #e5e5e5; border-radius: 12px; padding: 1.25rem; margin-bottom: 12px; display: flex; align-items: center; gap: 14px; }
+    .contact-icon { width: 40px; height: 40px; border-radius: 8px; background: #E1F5EE; display: flex; align-items: center; justify-content: center; color: #0F6E56; font-size: 20px; flex-shrink: 0; }
+    .contact-label { font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: #999; margin-bottom: 2px; }
+    .contact-value { font-size: 14px; font-weight: 500; color: #0F2D1F; }
+    .langs { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 1.5rem; }
+    .lang-pill { background: #E1F5EE; color: #085041; border-radius: 20px; padding: 4px 12px; font-size: 12px; }
+
+    /* FOOTER */
+    footer { background: #0F2D1F; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem; font-size: 12px; }
+    footer strong { color: rgba(255,255,255,0.85); }
+
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.8rem; }
+      .services-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="nav-logo">
+      <svg width="36" height="36" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="48" fill="none" stroke="#1D9E75" stroke-width="1.5"/>
+        <path d="M 36 22 A 30 30 0 1 1 36 78 A 22 22 0 1 0 36 22 Z" fill="#9FE1CB"/>
+        <polygon points="68,18 70.5,25 78,25 72,29.5 74.5,37 68,32.5 61.5,37 64,29.5 58,25 65.5,25" fill="#9FE1CB"/>
+      </svg>
+      <span>Cambodia Islamic Services</span>
+    </div>
+    <span class="nav-email">cambodiaislamicservices@outlook.com</span>
+  </nav>
+
+  <div class="hero">
+    <svg width="160" height="160" viewBox="0 0 680 260" style="margin-bottom:1.5rem;display:block;"><rect x="0" y="0" width="680" height="260" fill="#0F2D1F" rx="16"/><g transform="translate(340,130)"><circle cx="0" cy="0" r="90" fill="none" stroke="#1D9E75" stroke-width="0.8"/><circle cx="0" cy="0" r="84" fill="none" stroke="#1D9E75" stroke-width="0.3"/><path d="M -28 -38 A 48 48 0 1 1 -28 38 A 34 34 0 1 0 -28 -38 Z" fill="#9FE1CB"/><g transform="translate(22,-44) rotate(15)"><polygon points="0,-9 2.1,-3 8,-3 3.4,1.1 5.6,7.5 0,3.5 -5.6,7.5 -3.4,1.1 -8,-3 -2.1,-3" fill="#9FE1CB"/></g><text x="0" y="62" text-anchor="middle" font-family="Georgia,serif" font-size="8" fill="#9FE1CB" letter-spacing="4">✦ ✦ ✦</text></g><text x="340" y="198" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="600" fill="#ffffff" letter-spacing="2">CAMBODIA ISLAMIC SERVICES</text><text x="340" y="218" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="#9FE1CB" letter-spacing="3">GROUND IMPLEMENTATION PARTNER</text></svg>
+    <p class="hero-sub">Ground Implementation Partner · Cambodia</p>
+    <h1>Cambodia Islamic<br>Services</h1>
+    <p class="hero-desc">We are your trusted on-ground partner for Islamic humanitarian programmes in Cambodia — from Qurban and Zakat to Ramadan aid, education, water wells, and mosque development.</p>
+    <div class="badge-row">
+      <span class="badge">🇰🇭 Based in Cambodia</span>
+      <span class="badge">✓ Active operations</span>
+      <span class="badge">✓ Open to partnerships</span>
+    </div>
+    <div class="cta-row">
+      <a href="#contact" class="btn-primary">Partner with us</a>
+      <a href="#services" class="btn-secondary">Our services</a>
+    </div>
+  </div>
+
+  <div class="section" id="services">
+    <p class="section-label">What we do</p>
+    <p class="section-title">Full-service Islamic programme execution</p>
+    <div class="services-grid">
+      <div class="service-card">
+        <i class="ti ti-moon service-icon"></i>
+        <p class="service-name">Qurban & Aqiqah</p>
+        <p class="service-desc">Animal sourcing, halal slaughter, and full distribution to Muslim communities</p>
+      </div>
+      <div class="service-card">
+        <i class="ti ti-heart service-icon"></i>
+        <p class="service-name">Zakat & Sadaqah</p>
+        <p class="service-desc">Identify eligible recipients and distribute funds or goods on your behalf</p>
+      </div>
+      <div class="service-card">
+        <i class="ti ti-droplet service-icon"></i>
+        <p class="service-name">Water Hand Pump</p>
+        <p class="service-desc">Active water pump projects for underserved Cham Muslim villages in Cambodia</p>
+      </div>
+      <div class="service-card">
+        <i class="ti ti-sun service-icon"></i>
+        <p class="service-name">Ramadan programmes</p>
+        <p class="service-desc">Iftar packs, Sahur distribution, and food baskets for poor families</p>
+      </div>
+      <div class="service-card">
+        <i class="ti ti-school service-icon"></i>
+        <p class="service-name">Education support</p>
+        <p class="service-desc">Madrasah aid, Quran programmes, school supplies for Muslim children</p>
+      </div>
+      <div class="service-card">
+        <i class="ti ti-building service-icon"></i>
+        <p class="service-name">Mosque & infrastructure</p>
+        <p class="service-desc">Mosque renovation, water wells, and prayer facility support</p>
+      </div>
+      <div class="service-card">
+        <i class="ti ti-users service-icon"></i>
+        <p class="service-name">Community welfare</p>
+        <p class="service-desc">Orphan sponsorship, clothing drives, and year-round food aid</p>
+      </div>
+      <div class="service-card">
+        <i class="ti ti-cash service-icon"></i>
+        <p class="service-name">Fidyah & Kaffarah</p>
+        <p class="service-desc">Proper distribution to eligible recipients according to Shariah guidelines</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">Why partner with us</p>
+    <p class="section-title">What we bring to the table</p>
+    <div class="why-list">
+      <div class="why-item">
+        <div class="why-icon"><i class="ti ti-map-pin"></i></div>
+        <div class="why-text">
+          <strong>Permanently on the ground</strong>
+          <span>We live and operate in Cambodia — no outsourcing, no middlemen</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="ti ti-users"></i></div>
+        <div class="why-text">
+          <strong>Established community access</strong>
+          <span>Direct relationships with Cham Muslim villages, orphanages, and local ulama</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="ti ti-camera"></i></div>
+        <div class="why-text">
+          <strong>Full documentation</strong>
+          <span>Photos, videos, and reports delivered to you for every programme</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="ti ti-shield-check"></i></div>
+        <div class="why-text">
+          <strong>Shariah-compliant execution</strong>
+          <span>All ibadah conducted in accordance with Islamic guidelines and local authority oversight</span>
+        </div>
+      </div>
+      <div class="why-item">
+        <div class="why-icon"><i class="ti ti-coin"></i></div>
+        <div class="why-text">
+          <strong>Cost-effective for donors</strong>
+          <span>Lower cost of living in Cambodia means donor funds go significantly further</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <p class="section-label">How it works</p>
+    <p class="section-title">Simple partnership process</p>
+    <div class="how-steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <strong>You contact us</strong>
+          <span>Share your programme brief, timeline, and budget</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <strong>We propose & confirm</strong>
+          <span>We send a detailed execution plan with transparent pricing</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <strong>We execute on the ground</strong>
+          <span>Your programme is carried out fully by our team in Cambodia</span>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <strong>You receive full proof</strong>
+          <span>Photos, videos, and a completion report sent to you and your donors</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section" id="contact">
+    <p class="section-label">Get in touch</p>
+    <p class="section-title">Ready to partner?</p>
+    <div class="contact-card">
+      <div class="contact-icon"><i class="ti ti-mail"></i></div>
+      <div>
+        <p class="contact-label">Email</p>
+        <p class="contact-value">cambodiaislamicservices@outlook.com</p>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon"><i class="ti ti-brand-whatsapp"></i></div>
+      <div>
+        <p class="contact-label">WhatsApp</p>
+        <p class="contact-value">+855 70 700 776</p>
+      </div>
+    </div>
+    <div class="contact-card">
+      <div class="contact-icon"><i class="ti ti-map-pin"></i></div>
+      <div>
+        <p class="contact-label">Location</p>
+        <p class="contact-value">Phnom Penh, Cambodia</p>
+      </div>
+    </div>
+    <div class="langs">
+      <span class="lang-pill">🇬🇧 English</span>
+      <span class="lang-pill">🇲🇾 Bahasa Melayu</span>
+    </div>
+  </div>
+
+  <footer>
+    <strong>Cambodia Islamic Services</strong><br>
+    Trusted ground partner for Islamic humanitarian programmes · Phnom Penh, Cambodia<br><br>
+    cambodiaislamicservices@outlook.com
+  </footer>
+
+</body>
+</html>
